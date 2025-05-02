@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct PaparazziApp: App {
@@ -13,5 +14,6 @@ struct PaparazziApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: Quote.self)
     }
 }

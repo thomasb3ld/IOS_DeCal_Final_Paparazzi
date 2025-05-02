@@ -6,16 +6,25 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
+    @Environment(\.modelContext) private var modelContext
+    // Replace this with your OpenAI API key that starts with "sk-"
+    let apiKey = "MY-API-KEY-WENT-HERE"
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            HomeView(apiKey: apiKey, modelContext: modelContext)
+                .tabItem {
+                    Label("Generate", systemImage: "quote.bubble")
+                }
+            
+            QuotesListView(apiKey: apiKey)
+                .tabItem {
+                    Label("Quotes", systemImage: "list.bullet")
+                }
         }
-        .padding()
     }
 }
 
